@@ -46,7 +46,7 @@ jobs:
         uses: pulumi/esc-action@v1
         with:
           oidc-auth: false 
-          environment: 'demo/cloud-access/aws-oidc'
+          environment: 'demo/port-demo/port-env'
 
       - name: Verify environment variables were injected
         run: |
