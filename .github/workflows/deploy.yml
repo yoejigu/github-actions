@@ -28,7 +28,7 @@ jobs:
         with:
           organization: demo
           requested-token-type: urn:pulumi:token-type:access_token:organization
-          scope: admin
+          scope: standard
         
       - name: Install and inject ESC Evironment Variables
         uses: pulumi/esc-action@v1
