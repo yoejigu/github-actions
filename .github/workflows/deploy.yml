@@ -30,7 +30,9 @@ jobs:
       #     requested-token-type: urn:pulumi:token-type:access_token:personal
       #     scope: user:ytejigu
       - name: Login to Pulumi
-        run: pulumi login 
+        run: pulumi login
+        env: 
+          PULUMI_ACCESS_TOKEN: ${{secrets.PULUMI_ACCESS_TOKEN}}
         
       - name: Install and inject ESC Evironment Variables
         uses: pulumi/esc-action@v1
