@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - esc-integration
+
+  permissions:
+    id-token: write
+    contents: read
 jobs:
   up:
     name: Update
