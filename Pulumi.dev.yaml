@@ -1,6 +1,2 @@
 config:
   aws:region: us-east-1
-  port:allocated_storage: ""
-  port:database_name: "" 
-  port:db_username: ""
-  port:db_password: ""

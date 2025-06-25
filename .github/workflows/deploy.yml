@@ -51,10 +51,10 @@ jobs:
       - name: Set Pulumi Config
         run: |
           pulumi stack select demo/github-actions/dev
-          pulumi config set port:allocated_storage ${{ github.event.inputs.allocated_storage }}
-          pulumi config set port:database_name ${{ github.event.inputs.database_name }}
-          pulumi config set port:db_username ${{ github.event.inputs.db_username }}
-          pulumi config set port:db_password ${{ github.event.inputs.db_password }}
+          pulumi config set github-actions:allocated_storage ${{ github.event.inputs.allocated_storage }}
+          pulumi config set github-actions:database_name ${{ github.event.inputs.database_name }}
+          pulumi config set github-actions:db_username ${{ github.event.inputs.db_username }}
+          pulumi config set github-actions:db_password ${{ github.event.inputs.db_password }}
 
       - name: Applying infrastructure 🚀
         uses: pulumi/actions@v4
