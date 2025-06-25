@@ -22,8 +22,9 @@ jobs:
       - name: Authenticate with Pulumi Cloud
         uses: pulumi/auth-actions@v1
         with:
-          organization: pulumi
+          organization: demo
           requested-token-type: urn:pulumi:token-type:access_token:organization
+          scope: admin
         
       - name: Install and inject ESC Evironment Variables
         uses: pulumi/esc-action@v1
