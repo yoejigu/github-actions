@@ -9,6 +9,6 @@
         "@pulumi/aws": "^6.0.0",
         "@pulumi/awsx": "^2.0.2",
         "@pulumi/pulumi": "^3.113.0",
-        "@port-labs/port":"2.10.0"
+        "@port-labs/port":"2.9.0"
     }
 }
