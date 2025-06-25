@@ -1,6 +1,9 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
 
+import * as port from "@port-labs/port";
+
+
 export interface RdsDatabaseArgs {
     identifier?: string;
     instanceClass?: string;
@@ -20,7 +23,21 @@ export class RdsDatabase extends pulumi.ComponentResource {
     constructor(name: string, args: RdsDatabaseArgs, opts?: pulumi.ComponentResourceOptions) {
         super("pkg:index:RDS", name, {}, opts);
 
-
+        const rdsPortEntity = new port.Entity("rdsEntity", {
+            blueprint: "mysql-rds",
+            title: "MySQL RDS DB",
+            identifier: "mysql-rds-entity",
+            properties:{
+                stringProps:{
+                    "username": args.username,
+                    "password": args.password,
+                    "dbName": args.dbName,
+                },
+                numberProps:{
+                    "allocatedStorage": args.allocatedStorage
+                }
+            }
+        })
 
         //  Create a custom VPC
         const vpc = new aws.ec2.Vpc("custom-vpc", {
