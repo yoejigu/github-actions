@@ -4,9 +4,9 @@ on:
     branches:
       - esc-integration
 
-  permissions:
-    id-token: write
-    contents: read
+permissions:
+  id-token: write
+  contents: read
 jobs:
   up:
     name: Update
