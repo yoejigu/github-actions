@@ -27,8 +27,8 @@ jobs:
         uses: pulumi/auth-actions@v1
         with:
           organization: demo
-          requested-token-type: urn:pulumi:token-type:access_token:organization
-          scope: admin
+          requested-token-type: urn:pulumi:token-type:access_token:personal
+          user: ytejigu
         
       - name: Install and inject ESC Evironment Variables
         uses: pulumi/esc-action@v1
