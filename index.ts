@@ -1,9 +1,18 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as aws from "@pulumi/aws";
-import * as awsx from "@pulumi/awsx";
+import { RdsDatabase } from "./rdsComponent";
 
-// Create an AWS resource (S3 Bucket)
-const bucket = new aws.s3.BucketV2("my-yte-bucket-with-esc");
+const config = new pulumi.Config()
 
-// Export the name of the bucket
-export const bucketName = bucket.id;
+const rdsDb = new RdsDatabase("my-db", {
+    allocatedStorage: Number(process.env.RDS_ALLOCATEDSTORAGE) ?? 20,
+    engine: "mysql",
+    maxAllocatedStorage: 0,
+    dbName: "testdb",
+    username: "yteDemoAdmin",
+    password: "t3stpwdforD3mo",
+    publiclyAccessible: true,
+    identifier: "temporaldemodbprod"
+});
+
+
+export const rdsAddress = rdsDb.RdsAddress; 
