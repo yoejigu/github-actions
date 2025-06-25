@@ -2,7 +2,7 @@ name: Pulumi
 on:
   push:
     branches:
-      - esc-integration
+      - main
 
 jobs:
   up:
