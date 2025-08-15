@@ -26,15 +26,15 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout 
         uses: actions/checkout@v3
 
-      - name: Setup Node JS ✨
+      - name: Setup Node JS 
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Installing dependencies 📦️
+      - name: Installing dependencies 
         run: npm install
 
       - name: Login to Pulumi
@@ -56,7 +56,7 @@ jobs:
           pulumi config set github-actions:db_username ${{ github.event.inputs.db_username }}
           pulumi config set github-actions:db_password ${{ github.event.inputs.db_password }}
 
-      - name: Applying infrastructure 🚀
+      - name: Applying infrastructure 
         uses: pulumi/actions@v4
         with:
           command: up
