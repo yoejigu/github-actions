@@ -15,12 +15,6 @@ on:
       db_username:
         required: true
         type: string
-      db_password:
-        required: false
-        type: string
-      port_context:
-        required: false
-        type: string
 jobs:
   up:
     name: Update
