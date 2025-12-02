@@ -46,15 +46,17 @@ jobs:
         uses: pulumi/esc-action@v1
         with:
           oidc-auth: false 
-          environment: 'demo/port-demo/port-env'
+          environment: 'demo/dat-demo/yte-ssm-parameter'
 
       - name: Set Pulumi Config
         run: |
           pulumi stack select demo/github-actions/dev
+          echo $AWS_REGION
+          echo $DB_PWD
           pulumi config set github-actions:allocated_storage ${{ github.event.inputs.allocated_storage }}
           pulumi config set github-actions:database_name ${{ github.event.inputs.database_name }}
           pulumi config set github-actions:db_username ${{ github.event.inputs.db_username }}
-          pulumi config set github-actions:db_password ${{ github.event.inputs.db_password }}
+          pulumi config set github-actions:db_password $DB_PWD
 
       - name: Applying infrastructure 
         uses: pulumi/actions@v4
