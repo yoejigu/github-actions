@@ -42,8 +42,6 @@ jobs:
           oidc-auth: false 
           environment: 'demo/dat-demo/yte-ssm-parameter'
 
-      - name: Debug ESC injection
-        run: env | grep PULUMI_ENV
 
       - name: Set Pulumi Config
         run: |
