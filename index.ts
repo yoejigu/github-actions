@@ -4,7 +4,7 @@ import { RdsDatabase } from "./rdsComponent";
 const config = new pulumi.Config()
 let allocatedStorage = config.requireNumber("allocated_storage");
 let db_username = config.require("db_username");
-let db_password = config.require("db_password");
+const db_password = config.requireSecret("db_password");
 let db_name = config.require("database_name") 
 
 const rdsDb = new RdsDatabase("my-db", {
@@ -13,7 +13,7 @@ const rdsDb = new RdsDatabase("my-db", {
     maxAllocatedStorage: 0,
     dbName: "testdb",
     username: "yteDemoAdmin",
-    password: "t3stpwdforD3mo",
+    password: db_password,
     publiclyAccessible: true,
     identifier: "temporaldemodbprod"
 });
