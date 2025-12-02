@@ -11,7 +11,7 @@ export interface RdsDatabaseArgs {
     maxAllocatedStorage?: number;
     dbName: string;
     username: string;
-    password: string;
+    password: pulumi.Input<string>;
     publiclyAccessible?: boolean;
     engine?: string;
   }
