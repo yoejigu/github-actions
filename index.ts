@@ -1,10 +1,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import { RdsDatabase } from "./rdsComponent";
 
-const config = new pulumi.Config("env")
+const config = new pulumi.Config()
+const esc = new pulumi.Config("env")
 let allocatedStorage = config.requireNumber("allocated_storage");
 let db_username = config.require("db_username");
-const db_password = env.requireSecret("db_password");
+const db_password = esc.requireSecret("db_password");
 let db_name = config.require("database_name") 
 
 const rdsDb = new RdsDatabase("my-db", {
