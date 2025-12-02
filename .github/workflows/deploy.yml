@@ -15,12 +15,6 @@ on:
       db_username:
         required: true
         type: string
-      db_password:
-        required: true
-        type: string
-      port_context:
-        required: false
-        type: string  # passed from Port for optional status reporting
 jobs:
   up:
     name: Update
