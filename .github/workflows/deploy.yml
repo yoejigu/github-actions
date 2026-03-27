@@ -52,9 +52,19 @@ jobs:
 
 
       - name: Applying infrastructure 
-        uses: pulumi/actions@v4
-        with:
-          command: up
-          stack-name: demo/github-actions/dev
+        #uses: pulumi/actions@v4
+        #with:
+          #command: up
+          #stack-name: demo/github-actions/dev
         env:
            PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        run: |
+          pulumi stack select demo/github-actions/dev
+          pulumi up --yes --suppress-progress --logtostderr --logflow -v=9 2> /tmp/pulumi-debug.log
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-logs
+          path: /tmp/pulumi-debug.log
